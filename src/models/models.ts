@@ -15,7 +15,7 @@ export interface User {
     revenue: number;
     impressions: number;
     conversions: number;
-
+    data: number[]
 }
 
 export interface UsersProps {

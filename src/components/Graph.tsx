@@ -4,7 +4,7 @@ import Chart from 'react-google-charts'
 import './Graph.css';
 
 const LineData = [
-  ['x', 'dogs'],
+  ['x', 'd'],
   [0, 0],
   [1, 10],
   [2, 23],
@@ -14,18 +14,7 @@ const LineData = [
 //   [6, 11, 3],
 //   [7, 27, 19],
 ]
-const LineChartOptions = {
-//   hAxis: {
-//     title: 'Time',
-//   },
-//   vAxis: {
-//     title: 'Popularity',
-//   },
-//   series: {
-//     1: { curveType: 'function' },
-//   },
-}
-// import './App.css';
+
 
 function Graph() {
  
@@ -33,20 +22,12 @@ function Graph() {
   return (
     <div className="Graph">
            <div>
-        {/* <Line
-        //   options={options}
-          data={state}
-        //   style={{vh:50}}
-          datasetIdKey="id"
-        /> */}
            <Chart
           width={'200px'}
           height={'110px'}
           chartType="LineChart"
           loader={<div>Loading Chart</div>}
           data={LineData}
-          options={LineChartOptions}
-        //   rootProps={{ 'data-testid': '2' }}
         />
       </div>
     </div>

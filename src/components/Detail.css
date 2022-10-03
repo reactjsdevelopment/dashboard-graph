@@ -11,6 +11,7 @@ img{
     border-radius: 10px;
     margin: 20px;
     padding: 5px;
+    height: 280px;
 }
 
 #wrapper{
@@ -63,4 +64,29 @@ img{
     vertical-align:middle;
     margin-right:1em;
     color:white;
+    }
+
+    .profile {
+        color: grey;
+        font-weight: 500;
+    }
+
+    .head{
+        color: grey;
+        font-weight: 250;
+    }
+
+    .impr {
+        font-weight: bold;
+    color: orange;
+    }
+
+    .convr{
+        font-weight: bold;
+        color: blue; 
+    }
+
+    .reven{
+        font-weight: bold;
+        color: green; 
     }

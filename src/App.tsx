@@ -46,7 +46,7 @@ function prepareData(users: User[]){
     }
   }
   setUsers(users);
-  console.log(users, 'users');
+  console.log(users, log, 'users');
   
 }
 
