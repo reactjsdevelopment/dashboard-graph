@@ -6,56 +6,42 @@ import user from '../src/assets/users.json';
 import logs from '../src/assets/logs.json';
 import Detail from './components/Detail';
 import List from './components/List';
-import { Logs, User } from './models/models';
+import { Logs, PaginationData, User } from './models/models';
+import PaginationComponent from './components/Pagination';
 
 function App() {
   const [users, setUsers] = useState<User[]>([]);
+  const [limit, setLimit] = useState(10);
+  const [offset, setOffset] = useState(0);
 
-  useEffect(() => {
-    ListService.getUsers()
-      .then((response: any) => {
-        let result: User[] = response.data.records.map((a: any) => a.fields);
-        prepareData(result)
-      })
-     
-  }, []);
 
-function prepareData(users: User[]){
-  const log: Logs[] = JSON.parse(JSON.stringify(logs));
 
-  for (let index = 0; index < users.length; index++) {
-    let initializeRevenue = 0;
-    let initializeImpressions = 0;
-    let initializeConversions = 0;
-
-    for (let j = 0; j < log.length; j++) {
-
-      if (users[index].Id== log[j].user_id) {
-        initializeRevenue = initializeRevenue + log[j].revenue;
-        users[index].revenue = initializeRevenue;
-      }
-      
-      if (users[index].Id== log[j].user_id && log[j].type == "impression") {
-        initializeImpressions = initializeImpressions + 1;
-        users[index].impressions = initializeImpressions;
-      }
-      if (users[index].Id== log[j].user_id && log[j].type == "conversion") {
-        initializeConversions = initializeConversions + 1;
-        users[index].conversions = initializeConversions;
-      }
-    }
-  }
-  setUsers(users);
-  console.log(users, log, 'users');
-  
-}
+useEffect(() => {
+  const getData = async () => {
+    const tableData: any = ((await import("./services/getTableData")).default<User>({
+      limit,
+      offset,
+    }));
+    const finalObj = await tableData;
+    console.log(finalObj, 'finalObj');
+    
+    setUsers(finalObj.data);
+  };
+  getData();
+}, [limit, offset]);
 
   return (
-    <div className="App Main">
+    <div>
+      <div>
+      <PaginationComponent  limit={limit} offset={offset} total={100}  setLimit={setLimit}  setOffset={setOffset} />
+      </div>
+      <div className="App Main">
          {users.map((user) => (
              <List user={user} key={user.Id}/>
             ))}
     </div>
+    </div>
+
   );
 }
 

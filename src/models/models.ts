@@ -1,4 +1,4 @@
-export interface Logs {
+ interface Logs {
     time: string;
     type: string; // impressions, conversions
     user_id: number;
@@ -6,7 +6,7 @@ export interface Logs {
 }
 
 
-export interface User {
+ interface User {
     Name: string;
     avatar: string;
     Id: number;
@@ -18,6 +18,24 @@ export interface User {
     data: number[]
 }
 
-export interface UsersProps {
+ interface UsersProps {
     user: User;
   }
+
+  
+  interface PaginationProps {
+    limit: number;
+    offset: number;
+  }
+  
+  interface Pagination extends PaginationProps {
+    total: number;
+  }
+  
+  interface PaginationData<T extends object> {
+    pagination: Pagination;
+    data: T[];
+  }
+  
+  export type { User, Pagination, PaginationProps, PaginationData, Logs,  UsersProps};
+  
