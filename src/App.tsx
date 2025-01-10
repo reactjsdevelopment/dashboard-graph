@@ -36,7 +36,7 @@ useEffect(() => {
       <PaginationComponent  limit={limit} offset={offset} total={100}  setLimit={setLimit}  setOffset={setOffset} />
       </div>
       <div className="App Main">
-         {users.map((user) => (
+         {users.map((user, i) => (
              <List user={user} key={user.Id}/>
             ))}
     </div>

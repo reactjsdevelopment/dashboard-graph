@@ -14,7 +14,7 @@ function Detail({ user }: UsersProps) {
     <div className="Detail">
       <div className='header'>
         {(user.avatar != undefined || user.avatar) && <img src={user.avatar} alt="Lago di Braies" onError={addDefaultSrc}/>}
-        {(user.avatar == undefined || user.avatar == '') && <p data-letters={user.Name[0]}></p>}
+        {/* {(user.avatar == undefined || user.avatar == '') && <p data-letters={user.Name[0]}></p>} */}
 
         <div id="wrapper">
           <div id="inner1"> <h2>{user.Name}</h2></div>
@@ -37,7 +37,7 @@ function Detail({ user }: UsersProps) {
             <div id="inner1" className='head'>conversions</div>
           </div>
           <div id="wrapper">
-            <div id="inner1" className='reven'>{user.revenue.toFixed(2)}</div>
+            {/* <div id="inner1" className='reven'>{user.revenue.toFixed(2)}</div> */}
           </div>
         </div>
       </div>

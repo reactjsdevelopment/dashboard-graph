@@ -73,14 +73,14 @@ const PaginationComponent: React.FC<PProps> = ({
               <div>...</div>
             </Fragment>
           )}
-          {pageArray.map((page) => {
+          {pageArray.map((page, i) => {
             return (
               <Page
                 isActive={page === currentPage}
                 onClick={() => {
                   setOffset(limit * (page - 1));
                 }}
-              >
+                key={i}>
                 {page}
               </Page>
             );

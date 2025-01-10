@@ -3,11 +3,31 @@ import { Logs, PaginationData, PaginationProps, User } from "../models/models";
 import ListService from "./ListService";
 import logs from '../assets/logs.json';
 
+const mockResponse = {
+   Name: 'string',
+    avatar: 'string',
+    Id: 1,
+    occupation: 'string',
+
+    revenue: 2,
+    impressions: 3,
+    conversions: 4,
+  data: {
+    records: [
+      { fields: { id: 1, name: "John Doe", email: "john.doe@example.com" } },
+      { fields: { id: 2, name: "Jane Smith", email: "jane.smith@example.com" } },
+      { fields: { id: 3, name: "Alice Johnson", email: "alice.johnson@example.com" } },
+    ]
+  }
+};
+
 const getTableData = async <T extends object>({
     limit,
     offset,
   }: PaginationProps): Promise<PaginationData<T>> => {
-    const response: any = await ListService.getUsers()
+    // const response: any = await ListService.getUsers()
+    const response: any = mockResponse;
+    console.log(response);
       let result: User[] = response.data.records.map((a: any) => a.fields);
       let updateData = prepareData(result);
       const data = updateData.slice(offset, limit + offset) as T[];
