@@ -2,6 +2,7 @@
   "name": "dashboard-graph",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/dashboard-graph-react",
   "dependencies": {
     "@faker-js/faker": "^7.5.0",
     "@testing-library/jest-dom": "^5.16.5",
